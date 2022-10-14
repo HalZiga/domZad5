@@ -14,9 +14,11 @@ namespace domZad5
         
         static void Main(string[] args)
         {
-            int[] at = { 1, 3, 6, 9, 4, 67, 37, 8 };
-            Array.Sort(at);
-            Console.WriteLine(String.Join(" ",at));
+            
+
+
+
+
             Console.ReadKey();
         }
     }

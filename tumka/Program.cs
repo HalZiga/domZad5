@@ -9,7 +9,45 @@ namespace tumka
 {
     internal class Program
     {
+        /*static void Swap<T>(T[] a)//Тут ещё чтобы вводилось лист и массив
+        {
+            int g = 0;
+            int s = 0;
+            char[] glasn = { 'a', 'e', 'i', 'o', 'u', 'y' };//ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffкак сделать так чтобы можно было ввести в метод массив и список
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (glasn.Contains(a[i]))
+                {
+                    g++;
+                }
+                else
+                {
+                    s++;
+                }
+            }
+            Console.WriteLine($"Гласных {g}");
+            Console.WriteLine($"Согласных {s}");
+        }*/
         static void Zad1(params char[] array)
+        {
+            int g = 0;
+            int s = 0;
+            char[] glasn = { 'a', 'e', 'i', 'o', 'u', 'y' };
+            foreach (char c in array)
+            {
+                if (glasn.Contains(c))
+                {
+                    g++;
+                }
+                else
+                {
+                    s++;
+                }
+            }
+            Console.WriteLine($"Гласных {g}");
+            Console.WriteLine($"Согласных {s}");
+        }
+        static void Zad1(List<char> array)
         {
             int g = 0;
             int s = 0;
@@ -92,10 +130,10 @@ namespace tumka
             Console.WriteLine("Задание 6.1 тумка");
             string path = @"C:\Users\zigan\source\repos";
             char[] bukvi = File.ReadAllText(path).ToArray<char>();
-            Zad1(bukvi);
+            /*Zad1(bukvi);
 
 
-            /*Console.WriteLine("Задание 6.2 тумка");
+            Console.WriteLine("Задание 6.2 тумка");
             Console.WriteLine("Введите размерность первой матрицы: ");
             int[,] myArray = new int[Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine())];
             for (int i = 0; i < myArray.GetLength(0); i++)
@@ -121,7 +159,16 @@ namespace tumka
 
 
             Console.WriteLine("Задание 6.3 тумка");
-            Console.WriteLine(Zad3());*/
+            Console.WriteLine(Zad3());
+
+
+            Console.WriteLine("Задание 6.1_2");
+            List<char> bukv = File.ReadAllText(path).ToList<char>();
+            Zad1(bukv);*/
+
+
+            Console.WriteLine("Задание 6.2_2");
+
 
 
             Console.ReadKey();
