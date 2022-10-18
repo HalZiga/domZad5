@@ -7,6 +7,7 @@ using System.IO;
 
 namespace tumka
 {
+    
     internal class Program
     {
         /*static void Swap<T>(T[] a)//Тут ещё чтобы вводилось лист и массив
