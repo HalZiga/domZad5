@@ -115,8 +115,8 @@ namespace domZad5
                 if (arrrr[i] == 5)
                     { c2++; }
             }
-                
 
+            return c1 == c2 ? "sdfsdfsd" : "asdfsadf";
             if (c1 == c2) { return "Drinks All Round! Free Beers on Bjorg!"; }
             else { return "Ой, Бьорг - пончик! Ни для кого пива"; }
         }
@@ -124,7 +124,7 @@ namespace domZad5
         static void Main(string[] args)
         {
             /*Console.WriteLine("Задание 1");
-            Task1();*/
+            Task1();
 
             Console.WriteLine("Задание 2");
             Console.WriteLine("Введите количество бросков костей");
@@ -136,7 +136,7 @@ namespace domZad5
             int[] Scandinavian = new int[N];
             for (int i = 0; i < Scandinavian.Length; i++)
                 Scandinavian[i] = random.Next(0, 9);
-            Console.WriteLine(zd2(Bavarian, Scandinavian));
+            Console.WriteLine(zd2(Bavarian, Scandinavian));*/
 
 
 
