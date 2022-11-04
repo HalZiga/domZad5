@@ -10,6 +10,24 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace domZad5
 {
+    public struct Zhitel
+    {
+        public string name;
+        public int pasport;
+        public string problem;
+        public byte tip;
+        public bool um;
+        public Zhitel(string Name, int Pasport, string Problem, byte Tip, bool Um)
+        {
+            name = Name;
+            pasport = Pasport;
+            problem = Problem;
+            tip = Tip;
+            um = Um;
+        }
+
+    }
+    
     public struct Student
     {
         public string Sname;
@@ -29,6 +47,112 @@ namespace domZad5
     }
     internal class Program
     {
+        public static void Zad3()
+        {
+            Zhitel zhitel1 = new Zhitel("Азат Глаза Назад", 12345, "Откуда пени", 4, true);
+            Zhitel zhitel2 = new Zhitel("Илья", 01053, "Просто спросить", 7, true);
+            Zhitel zhitel3 = new Zhitel("Амир", 18181, "Отопление", 10, false);
+            Zhitel zhitel4 = new Zhitel("Ильназ", 99999, "Денег нет", 2, true);
+            Zhitel zhitel5 = new Zhitel("Данон", 11111, "Отопление", 8, true);
+            Stack<Zhitel> peredZin = new Stack<Zhitel>();
+            peredZin.Push(zhitel1);
+            peredZin.Push(zhitel2);
+            peredZin.Push(zhitel3);
+            peredZin.Push(zhitel4);
+            peredZin.Push(zhitel5);
+
+            LinkedList<string> winddeng = new LinkedList<string>();
+            LinkedList<string> windotopl = new LinkedList<string>();
+            while (peredZin.Count > 0)
+            {
+                var chel = peredZin.Pop();
+                byte skand = chel.tip;
+                string ima = chel.name;
+                string frasa = chel.problem;
+                bool imtellect = chel.um;
+                if (imtellect == false)
+                {
+                    Random rnd = new Random();
+                    int sluch = rnd.Next(0, 2);
+                    if (sluch == 0)
+                    { winddeng.AddLast(ima); }
+                    else if (sluch == 1)
+                    { windotopl.AddLast(ima); }
+                }
+                else if (frasa == "Откуда пени" || frasa == "Денег нет" || frasa == "Просто спросить")
+                {
+                    if (skand <= 5)
+                    {
+                        winddeng.AddLast(ima);
+                    }
+                    else
+                    {
+                        Console.WriteLine("На сколько человек хотите обогнать");
+                        int obgon = int.Parse(Console.ReadLine());
+                        if (winddeng.Count <= obgon)
+                        {
+                            winddeng.AddFirst(ima);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Скольких хотите обогнать");
+                            int kolvo = int.Parse(Console.ReadLine());
+                            Vper(ref winddeng, kolvo, ima);
+                        }
+                    }
+                }
+                else if (frasa == "Отопление")
+                {
+                    if (skand <= 5)
+                    {
+                        windotopl.AddLast(ima);
+                    }
+                    else if (skand > 5)
+                    {
+                        Console.WriteLine("На сколько человек хотите обогнать");
+                        int obgon = int.Parse(Console.ReadLine());
+                        if (windotopl.Count <= obgon)
+                        {
+                            windotopl.AddFirst(ima);
+                        }
+                        else
+                        {
+                            Vper(ref windotopl, obgon, ima);
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("ОЧередь в денежное окно");
+            foreach (string ocher in winddeng)
+            {
+                Console.WriteLine(ocher);
+            }
+            Console.WriteLine("ОЧередь в окно отопления");
+            foreach (string ocher in windotopl)
+            {
+                Console.WriteLine(ocher);
+            }
+
+        }   
+        static void Vper(ref LinkedList<string> a,int b,string y)
+        {
+            int len = a.Count;
+            int cnt = 0;
+            foreach (string s in a)
+            {
+                string namee = s;
+                
+                cnt++;
+                if (len - b == cnt)
+                {
+                    a.AddAfter(a.Find(s), y);
+                    return;
+              
+                }
+            }
+
+            
+        }
 
         static void Task1()
         {
@@ -100,11 +224,11 @@ namespace domZad5
                     Console.WriteLine("Вы ввели не то слово");
                     break;
             }
-
+            
 
 
         }
-        static string zd2(int[] arr, int[] arrrr)
+        /*static string zd2(int[] arr, int[] arrrr)
         {
             int c1 = 0;
             int c2 = 0;
@@ -119,7 +243,7 @@ namespace domZad5
             return c1 == c2 ? "sdfsdfsd" : "asdfsadf";
             if (c1 == c2) { return "Drinks All Round! Free Beers on Bjorg!"; }
             else { return "Ой, Бьорг - пончик! Ни для кого пива"; }
-        }
+        }*/
 
         static void Main(string[] args)
         {
@@ -138,6 +262,10 @@ namespace domZad5
                 Scandinavian[i] = random.Next(0, 9);
             Console.WriteLine(zd2(Bavarian, Scandinavian));*/
 
+            Console.WriteLine("Задание 3");
+            Zad3();
+            
+            
 
 
 

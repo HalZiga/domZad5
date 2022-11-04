@@ -239,7 +239,7 @@ namespace tumka
         
         static void Main(string[] args)
         {
-            Console.WriteLine("Задание 6.1 тумка");
+            /*Console.WriteLine("Задание 6.1 тумка");
             string path = @"C:\Users\zigan\source\repos\domZad5\TextFile1.txt";
             char[] bukvi = File.ReadAllText(path).ToArray<char>();
             Zad1(bukvi);
@@ -340,12 +340,20 @@ namespace tumka
                 ["Nov"] = radik11(),
                 ["Dec"] = radik12(),
             };
-            Console.WriteLine(string.Join(" ", HomeTask3(mamamia)));
+            Console.WriteLine(string.Join(" ", HomeTask3(mamamia)));*/
+            int sluch = 0;
+            int cnt = 0;
+            while (sluch == 0)
+            {
+                Random rnd = new Random();
+                sluch = rnd.Next(0,2);
+                cnt++;
+            }
             
 
+            Console.WriteLine($"{sluch}  {cnt}");
 
-
-            Console.ReadKey();
+                Console.ReadKey();
         }
         static int[] HomeTask3(Dictionary<string, int[]> t)
         {
