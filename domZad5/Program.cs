@@ -153,7 +153,38 @@ namespace domZad5
 
             
         }
+        public static void Task_4()
+        {
+            int[,] graph = { { 0, 1, 1, 0, 0, 0, 1 },
+                            { 1, 0, 1, 1, 0, 0, 0 },
+                            { 1, 1, 0, 0, 0, 0, 0 },
+                            { 0, 1, 0, 0, 1, 0, 0 },
+                            { 0, 0, 0, 1, 0, 1, 0 },
+                            { 0, 0, 0, 0, 1, 0, 1 },
+                            { 1, 0, 0, 0, 0, 1, 0 } };
+            Queue<int> queue = new Queue<int>();
+            int[] nodes = new int[9];
+            for (int i = 0; i < 7; i++)
+            { nodes[i] = 0; }
+            queue.Enqueue(0);
+            while (queue.Count != 0)
+            {
+                int node = queue.Peek();
+                queue.Dequeue();
+                nodes[node] = 2;
+                for (int j = 0; j < 7; j++)
+                {
+                    if (graph[node, j] == 1 && nodes[j] == 0)
+                    {
+                        queue.Enqueue(j);
+                        nodes[j] = 1;
+                    }
+                }
+                Console.WriteLine(node + 1);
+            }
+            Console.ReadKey();
 
+        }
         static void Task1()
         {
             Dictionary<string, Student> students = new Dictionary<string, Student>();
@@ -264,9 +295,10 @@ namespace domZad5
 
             Console.WriteLine("Задание 3");
             Zad3();
-            
-            
 
+
+            Console.WriteLine("Задание 4");
+            Task_4();
 
 
             Console.ReadKey();

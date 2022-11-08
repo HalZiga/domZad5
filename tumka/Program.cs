@@ -185,7 +185,7 @@ namespace tumka
         static List<List<int>> ZadL2(List<List<int>> a, List<List<int>> b)
         {
             List<List<int>> list = new List<List<int>>();
-            
+
 
             int cnt = 0;
             foreach (var item in a)
@@ -200,7 +200,7 @@ namespace tumka
                 }
 
             }
-                return list;
+            return list;
         }
 
         static string Zad3()
@@ -236,7 +236,7 @@ namespace tumka
 
             return;
         }*/
-        
+
         static void Main(string[] args)
         {
             /*Console.WriteLine("Задание 6.1 тумка");
@@ -346,14 +346,17 @@ namespace tumka
             while (sluch == 0)
             {
                 Random rnd = new Random();
-                sluch = rnd.Next(0,2);
+                sluch = rnd.Next(0, 2);
                 cnt++;
             }
-            
+
 
             Console.WriteLine($"{sluch}  {cnt}");
 
-                Console.ReadKey();
+            
+
+
+            Console.ReadKey();
         }
         static int[] HomeTask3(Dictionary<string, int[]> t)
         {
@@ -487,7 +490,6 @@ namespace tumka
             }
             return mak;
         }
-
-
+        
     }
 }
