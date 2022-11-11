@@ -63,6 +63,7 @@ namespace domZad5
 
             LinkedList<string> winddeng = new LinkedList<string>();
             LinkedList<string> windotopl = new LinkedList<string>();
+            LinkedList<string> windspros = new LinkedList<string>();
             while (peredZin.Count > 0)
             {
                 var chel = peredZin.Pop();
@@ -79,47 +80,17 @@ namespace domZad5
                     else if (sluch == 1)
                     { windotopl.AddLast(ima); }
                 }
-                else if (frasa == "Откуда пени" || frasa == "Денег нет" || frasa == "Просто спросить")
+                else if (frasa == "Откуда пени" || frasa == "Денег нет")
                 {
-                    if (skand <= 5)
-                    {
-                        winddeng.AddLast(ima);
-                    }
-                    else
-                    {
-                        Console.WriteLine("На сколько человек хотите обогнать");
-                        int obgon = int.Parse(Console.ReadLine());
-                        if (winddeng.Count <= obgon)
-                        {
-                            winddeng.AddFirst(ima);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Скольких хотите обогнать");
-                            int kolvo = int.Parse(Console.ReadLine());
-                            Vper(ref winddeng, kolvo, ima);
-                        }
-                    }
+                    Ochered(ref winddeng,skand,ima);
                 }
                 else if (frasa == "Отопление")
                 {
-                    if (skand <= 5)
-                    {
-                        windotopl.AddLast(ima);
-                    }
-                    else if (skand > 5)
-                    {
-                        Console.WriteLine("На сколько человек хотите обогнать");
-                        int obgon = int.Parse(Console.ReadLine());
-                        if (windotopl.Count <= obgon)
-                        {
-                            windotopl.AddFirst(ima);
-                        }
-                        else
-                        {
-                            Vper(ref windotopl, obgon, ima);
-                        }
-                    }
+                    Ochered(ref windotopl, skand, ima);
+                }
+                else if (frasa == "Просто спросить")
+                {
+                    Ochered(ref windspros, skand, ima);
                 }
             }
             Console.WriteLine("ОЧередь в денежное окно");
@@ -132,8 +103,33 @@ namespace domZad5
             {
                 Console.WriteLine(ocher);
             }
+            Console.WriteLine("ОЧередь в окно гадов, которым только спросить");
+            foreach (string ocher in windspros)
+            {
+                Console.WriteLine(ocher);
+            }
 
         }   
+        static void Ochered(ref LinkedList<string> a, byte skand, string ima)
+        {
+            if (skand <= 5)
+            {
+                a.AddLast(ima);
+            }
+            else
+            {
+                Console.WriteLine("На сколько человек хотите обогнать");
+                int obgon = int.Parse(Console.ReadLine());
+                if (a.Count <= obgon)
+                {
+                    a.AddFirst(ima);
+                }
+                else
+                {
+                    Vper(ref a, obgon, ima);
+                }
+            }
+        }
         static void Vper(ref LinkedList<string> a,int b,string y)
         {
             int len = a.Count;
@@ -293,8 +289,8 @@ namespace domZad5
                 Scandinavian[i] = random.Next(0, 9);
             Console.WriteLine(zd2(Bavarian, Scandinavian));*/
 
-            Console.WriteLine("Задание 3");
-            Zad3();
+            //Console.WriteLine("Задание 3");
+            //Zad3();
 
 
             Console.WriteLine("Задание 4");
