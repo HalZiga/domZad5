@@ -16,8 +16,8 @@ namespace domZad5
         public int pasport;
         public string problem;
         public byte tip;
-        public bool um;
-        public Zhitel(string Name, int Pasport, string Problem, byte Tip, bool Um)
+        public byte um;
+        public Zhitel(string Name, int Pasport, string Problem, byte Tip, byte Um)
         {
             name = Name;
             pasport = Pasport;
@@ -47,13 +47,30 @@ namespace domZad5
     }
     internal class Program
     {
+        
         public static void Zad3()
         {
-            Zhitel zhitel1 = new Zhitel("Азат Глаза Назад", 12345, "Откуда пени", 4, true);
-            Zhitel zhitel2 = new Zhitel("Илья", 01053, "Просто спросить", 7, true);
-            Zhitel zhitel3 = new Zhitel("Амир", 18181, "Отопление", 10, false);
-            Zhitel zhitel4 = new Zhitel("Ильназ", 99999, "Денег нет", 2, true);
-            Zhitel zhitel5 = new Zhitel("Данон", 11111, "Отопление", 8, true);
+
+            string fileName = @"C:\Users\zigan\source\repos\domZad5\TextFile2.txt";
+            string[] file = File.ReadAllText(fileName).Split(',').ToArray();
+
+            string fileName1 = @"C:\Users\zigan\source\repos\domZad5\TextFile3.txt";
+            string[] file1 = File.ReadAllText(fileName1).Split(',').ToArray();
+
+            string fileName2 = @"C:\Users\zigan\source\repos\domZad5\TextFile4.txt";
+            string[] file2 = File.ReadAllText(fileName2).Split(',').ToArray();
+
+            string fileName3 = @"C:\Users\zigan\source\repos\domZad5\TextFile5.txt";
+            string[] file3 = File.ReadAllText(fileName3).Split(',').ToArray();
+
+            string fileName4 = @"C:\Users\zigan\source\repos\domZad5\TextFile6.txt";
+            string[] file4 = File.ReadAllText(fileName4).Split(',').ToArray();
+
+            Zhitel zhitel1 = new Zhitel(file[0], int.Parse(file[1]), file[2], byte.Parse(file[3]), byte.Parse(file[4]));
+            Zhitel zhitel2 = new Zhitel(file1[0], int.Parse(file1[1]), file1[2], byte.Parse(file1[3]), byte.Parse(file1[4]));
+            Zhitel zhitel3 = new Zhitel(file2[0], int.Parse(file2[1]), file2[2], byte.Parse(file2[3]), byte.Parse(file2[4]));
+            Zhitel zhitel4 = new Zhitel(file3[0], int.Parse(file3[1]), file3[2], byte.Parse(file3[3]), byte.Parse(file3[4]));
+            Zhitel zhitel5 = new Zhitel(file4[0], int.Parse(file4[1]), file4[2], byte.Parse(file4[3]), byte.Parse(file4[4]));
             Stack<Zhitel> peredZin = new Stack<Zhitel>();
             peredZin.Push(zhitel1);
             peredZin.Push(zhitel2);
@@ -70,15 +87,17 @@ namespace domZad5
                 byte skand = chel.tip;
                 string ima = chel.name;
                 string frasa = chel.problem;
-                bool imtellect = chel.um;
-                if (imtellect == false)
+                int imtellect = chel.um;
+                if (imtellect == 0)
                 {
                     Random rnd = new Random();
-                    int sluch = rnd.Next(0, 2);
+                    int sluch = rnd.Next(0, 3);
                     if (sluch == 0)
-                    { winddeng.AddLast(ima); }
+                    { Ochered(ref winddeng, skand, ima); }
                     else if (sluch == 1)
-                    { windotopl.AddLast(ima); }
+                    { Ochered(ref windotopl, skand, ima); }
+                    else if (sluch == 2)
+                    { Ochered(ref windspros, skand, ima); }
                 }
                 else if (frasa == "Откуда пени" || frasa == "Денег нет")
                 {
@@ -109,21 +128,23 @@ namespace domZad5
                 Console.WriteLine(ocher);
             }
 
-        }   
+        }  
         static void Ochered(ref LinkedList<string> a, byte skand, string ima)
         {
             if (skand <= 5)
             {
                 a.AddLast(ima);
             }
-            else
+            else if (skand > 5)
             {
                 Console.WriteLine("На сколько человек хотите обогнать");
                 int obgon = int.Parse(Console.ReadLine());
+                
                 if (a.Count <= obgon)
                 {
                     a.AddFirst(ima);
                 }
+                
                 else
                 {
                     Vper(ref a, obgon, ima);
@@ -289,12 +310,27 @@ namespace domZad5
                 Scandinavian[i] = random.Next(0, 9);
             Console.WriteLine(zd2(Bavarian, Scandinavian));*/
 
-            //Console.WriteLine("Задание 3");
-            //Zad3();
+            Console.WriteLine("Задание 3");
+            Zad3();
 
 
-            Console.WriteLine("Задание 4");
-            Task_4();
+            //Console.WriteLine("Задание 4");
+            //Task_4();
+
+            string fileNam = @"C:\Users\zigan\source\repos\domZad5\Не работает.txt";// Когда я сохраняю файл через вс он делает так, что не распознаётся русская клавиатур пишет   ?????
+            string[] fil = File.ReadAllText(fileNam).Split(',').ToArray();
+            int cn = 0;
+            foreach(string i in fil)
+            { Console.WriteLine(i);
+            cn++;
+            }
+            Console.WriteLine();
+            Console.WriteLine(cn);
+
+            
+            
+            
+            
 
 
             Console.ReadKey();
